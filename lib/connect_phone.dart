@@ -1,6 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
-import 'package:mowit_app/sign_in.dart';
-import 'package:mowit_app/sign_up.dart';
+import 'package:mowit_app/login.dart';
 
 class ConnectPage extends StatefulWidget {
   const ConnectPage({super.key});
@@ -71,7 +72,7 @@ class _ConnectPageState extends State<ConnectPage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const SignInPage();
+                        return const LoginPage();
                       },
                     ),
                   );

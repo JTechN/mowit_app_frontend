@@ -2,82 +2,46 @@
 
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
+import 'package:mowit_app/main.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInContractor extends StatefulWidget {
+  const SignInContractor({super.key});
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _SignInContractorState createState() => _SignInContractorState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignInContractorState extends State<SignInContractor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: const Text("Contractor Login"),
+        centerTitle: true,
+        leading: GestureDetector(
+          child: const Icon(Icons.arrow_back),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const LoginPage();
+                },
+              ),
+            );
+          },
+        ),
         backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Container(
+              margin: const EdgeInsets.all(22),
+            ),
             Image.asset('images/logo.png'),
             Container(
-              padding: const EdgeInsets.only(top: 10),
-            ),
-            const SizedBox(
-              width: 350.0,
-              height: 40.0,
-              child: TextField(
-                cursorColor: Colors.red,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.red),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  labelText: 'First Name',
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 10),
-            ),
-            const SizedBox(
-              width: 350.0,
-              height: 40.0,
-              child: TextField(
-                cursorColor: Colors.red,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.red),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  labelText: 'Last Name',
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 10),
-            ),
-            const SizedBox(
-              width: 350.0,
-              height: 40.0,
-              child: TextField(
-                cursorColor: Colors.red,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.red),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  labelText: 'Email',
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 50),
             ),
             const SizedBox(
               width: 350.0,
@@ -123,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const LoginPage();
+                        return const HomePage();
                       },
                     ),
                   );
@@ -132,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.red,
                 ),
-                child: const Text("Create Account"),
+                child: const Text("Sign In"),
               ),
             ),
           ],

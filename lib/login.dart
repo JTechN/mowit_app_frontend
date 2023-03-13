@@ -1,7 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:mowit_app/sign_in.dart';
+import 'package:mowit_app/sign_in_contractor.dart';
+import 'package:mowit_app/sign_in_customer.dart';
 import 'package:mowit_app/sign_up.dart';
 import 'package:mowit_app/connect_phone.dart';
 
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Image.asset('images/logo.png'),
             Container(
-              padding: const EdgeInsets.only(top: 100),
+              padding: const EdgeInsets.only(top: 50),
             ),
             SizedBox(
               width: 350.0,
@@ -58,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const SignInPage();
+                        return const SignInCustomer();
                       },
                     ),
                   );
@@ -67,7 +68,30 @@ class _LoginPageState extends State<LoginPage> {
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.red,
                 ),
-                child: const Text("Sign In"),
+                child: const Text("Sign In as Customer"),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 5),
+            ),
+            SizedBox(
+              width: 350.0,
+              height: 50.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const SignInContractor();
+                      },
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.red,
+                ),
+                child: const Text("Sign In as Contractor"),
               ),
             ),
             SizedBox(
