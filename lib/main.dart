@@ -1,11 +1,25 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
-import 'package:mowit_app/sign_in.dart';
+import 'package:mowit_app/profile_edit.dart';
+import 'package:mowit_app/profile_view.dart';
+import 'package:mowit_app/homepage.dart';
+import 'package:mowit_app/settings.dart';
 
 void main() {
   runApp(const MyApp());
+}
+
+String firstName = "Andrew";
+String lastName = "Winland";
+
+String getFirstName() {
+  return firstName;
+}
+
+String getLastName() {
+  return lastName;
 }
 
 class MyApp extends StatelessWidget {
@@ -56,9 +70,10 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           "MowIt",
           style: TextStyle(
+            fontFamily: 'Berkshire Swash',
             color: Colors.white,
             fontSize: 25,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w200,
           ),
         ),
         centerTitle: true,
@@ -75,8 +90,8 @@ class _HomePageState extends State<HomePage> {
       decoration: BoxDecoration(
         color: Colors.red,
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
       ),
       child: Row(
@@ -85,79 +100,48 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 0;
-              });
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const Home();
+                  },
+                ),
+              );
             },
-            icon: pageIndex == 0
-                ? const Icon(
-                    Icons.home_filled,
-                    color: Colors.white,
-                    size: 35,
-                  )
-                : const Icon(
-                    Icons.home_outlined,
-                    color: Colors.white,
-                    size: 35,
-                  ),
+            icon: const Icon(Icons.home_outlined),
+            color: Colors.white,
+            iconSize: 35,
           ),
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 1;
-              });
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const ProfileView();
+                  },
+                ),
+              );
             },
-            icon: pageIndex == 1
-                ? const Icon(
-                    Icons.work_rounded,
-                    color: Colors.white,
-                    size: 35,
-                  )
-                : const Icon(
-                    Icons.work_outline_outlined,
-                    color: Colors.white,
-                    size: 35,
-                  ),
+            icon: const Icon(Icons.person_outlined),
+            color: Colors.white,
+            iconSize: 35,
           ),
           IconButton(
             enableFeedback: false,
             onPressed: () {
-              setState(() {
-                pageIndex = 2;
-              });
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const Settings();
+                  },
+                ),
+              );
             },
-            icon: pageIndex == 2
-                ? const Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                    size: 35,
-                  )
-                : const Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                    size: 35,
-                  ),
-          ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 3;
-              });
-            },
-            icon: pageIndex == 3
-                ? const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 35,
-                  )
-                : const Icon(
-                    Icons.person_outline,
-                    color: Colors.white,
-                    size: 35,
-                  ),
-          ),
+            icon: const Icon(Icons.settings),
+            color: Colors.white,
+            iconSize: 35,
+          )
         ],
       ),
     );
@@ -169,16 +153,109 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Page Number 1",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 20),
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "Welcome,",
+                      style: TextStyle(
+                        fontFamily: 'Berkshire Swash',
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "         $firstName $lastName",
+                      style: TextStyle(
+                        fontFamily: 'Berkshire Swash',
+                        color: Colors.red,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 50),
+                ),
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/profile picture.jpg'),
+                )
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.only(top: 20),
+            ),
+            Align(
+              alignment: Alignment(-.75, 0),
+              child: Text(
+                "Recommended based on Zip Code:",
+                style: TextStyle(
+                  fontFamily: 'Berkshire Swash',
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 10),
+            ),
+            Row(
+              children: [
+                Column(
+                  children: const [
+                    Text(
+                      "        Landon's Lawn Care",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Kennesaw, Georgia",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 75.0,
+                  height: 25.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.grey,
+                    ),
+                    child: const Text("Book"),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -211,16 +288,158 @@ class Page3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Page Number 3",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 25),
+            ),
+            CircleAvatar(
+              radius: 75,
+              backgroundImage: AssetImage('images/profile picture.jpg'),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "$firstName $lastName",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "First Name",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              firstName,
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "Last Name",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              lastName,
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "Phone Number",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              "770-123-4567",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "Email",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              "AndrewsEmail@gmail.com",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            Text(
+              "Password",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Text(
+              "MyPassword123!",
+              style: TextStyle(
+                fontFamily: 'Berkshire Swash',
+                color: Colors.red,
+                fontSize: 25,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+            ),
+            SizedBox(
+              width: 350.0,
+              height: 40.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return const ProfileEdit();
+                      },
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.red,
+                ),
+                child: const Text("Edit Information"),
+              ),
+            ),
+          ],
         ),
       ),
     );

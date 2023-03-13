@@ -4,21 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
 import 'package:mowit_app/main.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class SignInCustomer extends StatefulWidget {
+  const SignInCustomer({super.key});
 
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _SignInCustomerState createState() => _SignInCustomerState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignInCustomerState extends State<SignInCustomer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: const Text("Customer Login"),
+        centerTitle: true,
         leading: GestureDetector(
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
