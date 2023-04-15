@@ -1,260 +1,179 @@
-// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
-import 'package:mowit_app/login.dart';
-import 'package:mowit_app/profile_edit.dart';
-import 'package:mowit_app/profile_view.dart';
-import 'package:mowit_app/homepage.dart';
-import 'package:mowit_app/settings.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-String firstName = "Andrew";
-String lastName = "Winland";
-
-String getFirstName() {
-  return firstName;
-}
-
-String getLastName() {
-  return lastName;
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'MowIT',
       theme: ThemeData(
-        primaryColor: Colors.green,
-        splashColor: Colors.amber,
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+        primarySwatch: Colors.red,
       ),
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int pageIndex = 0;
-
-  final pages = [
-    const Page1(),
-    const Page2(),
-    const Page3(),
-    const Page4(),
-  ];
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
-        title: Text(
-          "MowIt",
-          style: TextStyle(
-            fontFamily: 'Berkshire Swash',
-            color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w200,
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.red,
+        title: Text('MowIT'),
       ),
-      body: pages[pageIndex],
-      bottomNavigationBar: buildMyNavBar(context),
-    );
-  }
-
-  Container buildMyNavBar(BuildContext context) {
-    return Container(
-      height: 60,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+      
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'images/logo.jpg',
+              width: 150.0,
+              height: 150.0,
+            ),
+            SizedBox(height: 32),
+            Text(
+              'Please sign in or sign up',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the sign-in screen
+              },
+              child: Text('Sign In'),
+            ),
+            SizedBox(height: 16),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NameInputScreen()),
+                );
+              },
+              child: Text('Sign Up'),
+            ),
+          ],
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return const Home();
-                  },
-                ),
-              );
-            },
-            icon: const Icon(Icons.home_outlined),
-            color: Colors.white,
-            iconSize: 35,
-          ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return const ProfileView();
-                  },
-                ),
-              );
-            },
-            icon: const Icon(Icons.person_outlined),
-            color: Colors.white,
-            iconSize: 35,
-          ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return const Settings();
-                  },
-                ),
-              );
-            },
-            icon: const Icon(Icons.settings),
-            color: Colors.white,
-            iconSize: 35,
-          )
-        ],
       ),
     );
   }
 }
 
-class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
+class NameInputScreen extends StatefulWidget {
+  @override
+  _NameInputScreenState createState() => _NameInputScreenState();
+}
+
+class _NameInputScreenState extends State<NameInputScreen> {
+  final _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 20),
-            ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "Welcome,",
-                      style: TextStyle(
-                        fontFamily: 'Berkshire Swash',
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "         $firstName $lastName",
-                      style: TextStyle(
-                        fontFamily: 'Berkshire Swash',
-                        color: Colors.red,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 50),
-                ),
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/profile picture.jpg'),
-                )
-              ],
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 20),
-            ),
-            Align(
-              alignment: Alignment(-.75, 0),
-              child: Text(
-                "Recommended based on Zip Code:",
-                style: TextStyle(
-                  fontFamily: 'Berkshire Swash',
+      appBar: AppBar(
+        title: Text('Enter Your Name'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  hintText: 'Enter your name',
                 ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 10),
-            ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  final name = _nameController.text;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NameDisplayScreen(name: name),
+                    ),
+                  );
+                },
+                child: Text('Submit'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+class NameDisplayScreen extends StatelessWidget {
+  final String name;
+
+  const NameDisplayScreen({Key? key, required this.name}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Name Display'),
+      ),
+      body: Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: const [
-                    Text(
-                      "        Landon's Lawn Care",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "Kennesaw, Georgia",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+                Text(
+                  'Hello, $name!',
+                  style: TextStyle(fontSize: 24),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 75),
-                ),
-                SizedBox(
-                  width: 75.0,
-                  height: 25.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.grey,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditAccountScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey[200],
                     ),
-                    child: const Text("Book"),
+                    child: Icon(
+                      Icons.person,
+                      size: 30,
+                      color: Colors.grey[500],
+                    ),
                   ),
                 ),
               ],
             ),
+            Row(
+              children: [
+                Text(
+                  'Five Stars',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                Icon(
+                  Icons.star,
+                  size: 16,
+                  color: Colors.yellow,
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -262,205 +181,55 @@ class Page1 extends StatelessWidget {
   }
 }
 
-class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Page Number 2",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key}) : super(key: key);
-
+class EditAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        title: Text('Edit Account'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.only(top: 25),
-            ),
-            CircleAvatar(
-              radius: 75,
-              backgroundImage: AssetImage('images/profile picture.jpg'),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
             Text(
-              "$firstName $lastName",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
+              'First Name:',
+              style: TextStyle(fontSize: 16),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
+            TextField(),
+            SizedBox(height: 16),
             Text(
-              "First Name",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+              'Last Name:',
+              style: TextStyle(fontSize: 16),
             ),
+            TextField(),
+            SizedBox(height: 16),
             Text(
-              firstName,
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
+              'Phone Number:',
+              style: TextStyle(fontSize: 16),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
+            TextField(),
+            SizedBox(height: 16),
             Text(
-              "Last Name",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+              'Email:',
+              style: TextStyle(fontSize: 16),
             ),
+            TextField(),
+            SizedBox(height: 16),
             Text(
-              lastName,
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
+              'Password:',
+              style: TextStyle(fontSize: 16),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            Text(
-              "Phone Number",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "770-123-4567",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            Text(
-              "Email",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "AndrewsEmail@gmail.com",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            Text(
-              "Password",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              "MyPassword123!",
-              style: TextStyle(
-                fontFamily: 'Berkshire Swash',
-                color: Colors.red,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-            ),
-            SizedBox(
-              width: 350.0,
-              height: 40.0,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return const ProfileEdit();
-                      },
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.red,
-                ),
-                child: const Text("Edit Information"),
-              ),
+            TextField(),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Save Changes'),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class Page4 extends StatelessWidget {
-  const Page4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text(
-          "Page Number 4",
-          style: TextStyle(
-            color: Colors.red,
-            fontSize: 45,
-            fontWeight: FontWeight.w500,
-          ),
         ),
       ),
     );
