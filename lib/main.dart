@@ -22,6 +22,7 @@ String getLastName() {
   return lastName;
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -103,7 +104,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const Home();
+                    return const HomePage();
                   },
                 ),
               );
@@ -161,81 +162,99 @@ class Page1 extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
             ),
             Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "Welcome,",
-                      style: TextStyle(
-                        fontFamily: 'Berkshire Swash',
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "         $firstName $lastName",
-                      style: TextStyle(
-                        fontFamily: 'Berkshire Swash',
-                        color: Colors.red,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 50),
-                ),
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/profile picture.jpg'),
-                )
-              ],
-            ),
+  children: [
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Welcome,",
+          style: TextStyle(
+            fontFamily: 'Berkshire Swash',
+            color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        Text(
+          "$firstName $lastName",
+          style: TextStyle(
+            fontFamily: 'Berkshire Swash',
+            color: Colors.red,
+            fontSize: 50,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    ),
+    SizedBox(width: 10),
+    CircleAvatar(
+      radius: 50,
+      backgroundImage: AssetImage('images/profile picture.jpg'),
+    ),
+  ],
+),
             Container(
               padding: const EdgeInsets.only(top: 20),
             ),
             Align(
-              alignment: Alignment(-.75, 0),
+              alignment: Alignment(-1,0),
               child: Text(
                 "Recommended based on Zip Code:",
                 style: TextStyle(
                   fontFamily: 'Berkshire Swash',
+                  fontSize: 40,
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 10),
-            ),
+            
             Row(
               children: [
+                //Start of Company Widgets
                 Column(
                   children: const [
                     Text(
-                      "        Landon's Lawn Care",
+                      "Mike's Lawn Care",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 18,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Kennesaw, Georgia - Around 2.5 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Offered: Lawn Cutting \$100, Tree Removal \$100",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
-                      "Kennesaw, Georgia",
+                      "Serives Offered: Weed Removal \$100, Pest Control \$150",
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
                         fontWeight: FontWeight.w500,
                       ),
-                    ),
+                    )
+
                   ],
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 75.0,
-                  height: 25.0,
+                  width: 80.0,
+                  height: 50.0,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -248,13 +267,353 @@ class Page1 extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Colors.grey,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
                     ),
-                    child: const Text("Book"),
+                    child: const Text("BOOK"),
                   ),
                 ),
+                //End of Compant Widgets
+             
+                //End of Company Widgets
+        
               ],
             ),
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+//Next Company
+Row(
+  
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "John's Mowing and Company",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Kennesaw, Georgia - Around 5 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Offered: Lawn Cutting \$100 minimum (Size of lawn is facotred)",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("BOOK"),
+                  ),
+                ),
+                //End of Compant Widgets
+                SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                //End of Company Widgets
+        
+              ],
+            ),
+
+
+  
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+//Next Company
+Row(
+  
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "BIG RYAN'S TREES",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Maietta, Georgia - Around 8 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Offered: Tree Removal \$300 minimum",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("BOOK"),
+                  ),
+                ),
+                //End of Compant Widgets
+                SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                //End of Company Widgets
+        
+              ],
+            ), 
+
+
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+//Next Company
+Row(
+  
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "Charlie Deets",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Maietta, Georgia - Around 15 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Offered: Lawn Care, Complete Serives \$250",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("BOOK"),
+                  ),
+                ),
+                //End of Compant Widgets
+                
+                //End of Company Widgets
+        
+              ],
+            ),  
+SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+            Row(
+  
+              children: [
+                //Start of Company Widgets
+                Column(
+                  children: const [
+                    Text(
+                      "Gwinnett Landscaping Co.",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Tucker, Georgia - Around 23 miles Away",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    Text(
+                      "Serives Offered: Total Lanscaping Package - \$300",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 75),
+                ),
+                SizedBox(
+                  width: 80.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("BOOK"),
+                  ),
+                ),
+                //End of Compant Widgets
+                
+                //End of Company Widgets
+        
+              ],
+            ), 
+
+
+            SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+
+                                    SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+//Next Company       
+ SizedBox(
+                  width: 200.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("Search By Zip Code"),
+                  ),
+                ),
+
+                SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+
+SizedBox(
+                  width: 200.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const HomePage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("Search by Job"),
+                  ),
+                )
+
           ],
         ),
       ),
@@ -298,6 +657,7 @@ class Page3 extends StatelessWidget {
             CircleAvatar(
               radius: 75,
               backgroundImage: AssetImage('images/profile picture.jpg'),
+              
             ),
             Container(
               padding: EdgeInsets.only(top: 20),

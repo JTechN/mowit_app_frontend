@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
 import 'package:mowit_app/main.dart';
+import 'package:mowit_app/main2.dart';
 
 class SignInContractor extends StatefulWidget {
   const SignInContractor({super.key});
@@ -87,7 +88,7 @@ class _SignInContractorState extends State<SignInContractor> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const HomePage();
+                        return const HomePage2();
                       },
                     ),
                   );

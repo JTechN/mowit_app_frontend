@@ -90,7 +90,6 @@ flutter:
       - family: Berkshire Swash
         fonts:
         - asset: fonts/BerkshireSwash-Regular.ttf
-        - asset: fonts/Berkshire-Swash.ttf
         - weight: 700
   #
   # For details regarding fonts from package dependencies,
