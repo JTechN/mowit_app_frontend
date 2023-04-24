@@ -19,7 +19,7 @@ class _ProfileViewState extends State<ProfileView> {
       appBar: AppBar(
         leading: const Icon(
           Icons.menu,
-          color: Colors.white,
+          color: Color.fromARGB(255, 255, 0, 0),
         ),
         title: const Text(
           "MowIt",
@@ -209,7 +209,7 @@ class _ProfileViewState extends State<ProfileView> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const Home();
+                    return const HomePage();
                   },
                 ),
               );
