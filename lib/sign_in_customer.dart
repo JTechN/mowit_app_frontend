@@ -54,7 +54,7 @@ class _SignInCustomerState extends State<SignInCustomer> {
                       borderSide: BorderSide(color: Colors.red)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.red)),
-                  labelText: 'User Name',
+                  labelText: 'User Name/Phone Number',
                 ),
               ),
             ),

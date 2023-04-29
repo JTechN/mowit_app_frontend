@@ -55,7 +55,7 @@ class _SignInContractorState extends State<SignInContractor> {
                       borderSide: BorderSide(color: Colors.red)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.red)),
-                  labelText: 'User Name',
+                  labelText: 'User Name/Phone Number',
                 ),
               ),
             ),
