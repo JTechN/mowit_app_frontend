@@ -1,7 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:mowit_app/main.dart';
 import 'package:mowit_app/profile_view.dart';
+import 'package:mowit_app/homepage.dart';
 import 'package:mowit_app/homepage.dart';
 
 class Settings extends StatefulWidget {
@@ -12,6 +14,10 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  bool isContractor = false;
+  bool receiveNotifications = true;
+  String selectedLocation = 'Current Location';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +41,94 @@ class _SettingsState extends State<Settings> {
       ),
       bottomNavigationBar: buildMyNavBar(context),
       body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-        children: [
-          Text("Settings"),
-        ],
-      )),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Settings",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Account",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              ListTile(
+                title: const Text("Switch to a contractor account"),
+                trailing: Checkbox(
+                  value: isContractor,
+                  onChanged: (value) {
+                    setState(() {
+                      isContractor = value!;
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Notifications",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              SwitchListTile(
+                title: const Text("Receive notifications"),
+                value: receiveNotifications,
+                onChanged: (value) {
+                  setState(() {
+                    receiveNotifications = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Location",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              DropdownButton<String>(
+                value: selectedLocation,
+                onChanged: (value) {
+                  setState(() {
+                    selectedLocation = value!;
+                  });
+                },
+                items: <String>[
+                  'Current Location',
+                  'Home',
+                  'Work',
+                  'Other',
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "General",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              ListTile(
+                title: const Text("Privacy Policy"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+              ListTile(
+                title: const Text("Terms of Use"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+              ListTile(
+                title: const Text("Contact Us"),
+                trailing: const Icon(Icons.arrow_forward_ios),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -62,7 +151,7 @@ class _SettingsState extends State<Settings> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const Home();
+                    return const HomePage();
                   },
                 ),
               );

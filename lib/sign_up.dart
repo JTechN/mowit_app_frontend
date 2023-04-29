@@ -11,6 +11,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+bool? isContractor = false; // variable type is now nullable boolean
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,6 +136,31 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: const Text("Create Account"),
               ),
             ),
+
+            Center(
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Checkbox(
+        value: isContractor,
+        onChanged: (bool? value) {
+          setState(() {
+            isContractor = value;
+          });
+        },
+      ),
+      const SizedBox(width: 8.0),
+      Text(
+        'Are you a contractor?',
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 18,
+        ),
+      ),
+    ],
+  ),
+),
+
           ],
         ),
       ),

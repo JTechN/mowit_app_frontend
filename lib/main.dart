@@ -1,5 +1,5 @@
-
 // ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
+
 
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
@@ -7,6 +7,10 @@ import 'package:mowit_app/profile_edit.dart';
 import 'package:mowit_app/profile_view.dart';
 import 'package:mowit_app/homepage.dart';
 import 'package:mowit_app/settings.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -254,25 +258,195 @@ class Page1 extends StatelessWidget {
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Mike's Lawn Care",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4701234567',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '470-123-4567',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
+                ),
+                Text(
+                  'Services:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  "Lawn Cutting \$100, Tree Removal \$100",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                Text(
+                  "Weed Removal \$100, Pest Control \$150",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                
+                SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                  'NONE',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),
+                  ),
+                  ),
+                         
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 47, 255),
+    ),
+    child: Text('INFO'),
+  ),
+),
+// END OF NEW BUTTON
+SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                // Start Book Button 
+  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Book Now!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4701234567',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '470-123-4567',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+                Text(
+                  "You have now booked with Mike's Lawn Care!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to futher book the appointment',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+    ),
+    child: Text('BOOK'),
+  ),
+),
                 //End of Compant Widgets
              
                 //End of Company Widgets
@@ -308,7 +482,15 @@ Row(
                     ),
 
                     Text(
-                      "Serives Offered: Lawn Cutting \$100 minimum (Size of lawn is facotred)",
+                      "Serives Offered: Lawn Cutting \$100 minimum",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "Size of lawn is factored",
                       style: TextStyle(
                         color: Color.fromARGB(255, 161, 161, 161),
                         fontSize: 20,
@@ -322,29 +504,186 @@ Row(
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "John's Mowing and Company",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4042456363',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-245-6363',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-                //End of Compant Widgets
+                ),
+                Text(
+                  'Services:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  "Lawn Cutting \$100 minimum (Size of lawn is facotred)",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                
                 SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                  'NONE',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),
+                  ),
+                  ),
+                         
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 47, 255),
+    ),
+    child: Text('INFO'),
+  ),
+),
+// END OF NEW BUTTON
+SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
+                // Start Book Button 
+  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Book Now!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4042456363',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-245-6363',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+                Text(
+                  "You have now booked with John's Mowing and Company!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to futher book the appointment',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+    ),
+    child: Text('BOOK'),
+  ),
+),
                 //End of Company Widgets
         
               ],
@@ -395,29 +734,193 @@ Row(
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "BIG RYAN'S TREES",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+7702563258',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '770-256-3258',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-                //End of Compant Widgets
+                ),
+                Text(
+                  'Services:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Tree Removal \$300 minimum',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                
                 SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                  'Jackson H:',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),
+                  ),
+                  ),
+                Text(
+                  'They performed exactly as they said they would. JB was perfectly reasonable and forth coming when planning the work so they would not break my budget.',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),         
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 47, 255),
+    ),
+    child: Text('INFO'),
+  ),
+),
+// END OF NEW BUTTON
+SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
                     ),
+                // Start Book Button 
+  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Book Now!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+7702563258',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '770-256-3258',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+                Text(
+                  "You have now booked with BIG RYAN'S TREES!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to futher book the appointment',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+    ),
+    child: Text('BOOK'),
+  ),
+),
                 //End of Company Widgets
         
               ],
@@ -466,26 +969,205 @@ Row(
                 Container(
                   margin: EdgeInsets.only(left: 75),
                 ),
+
+                //NEW BUTTON 
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Charlie Deets',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+17705899845',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '770-589-9845',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
+                ),
+                Text(
+                  'Services:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Lawn Care, Complete Services \$250',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                Text(
+                  'Lawn Pest Control \$150',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                  'Stacy A:',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),
+                  ),
+                  ),
+                Text(
+                  'Put in two catchment drains and drain pipe to get rain water away from my home’s foundation. Work was completed quickly and to my full satisfaction. Would definitely use this group again for a landscaping issue.',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),         
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 47, 255),
+    ),
+    child: Text('INFO'),
+  ),
+),
+// END OF NEW BUTTON
+SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                // Start Book Button 
+  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Book Now!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+17705899845',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '770-589-9845',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+                Text(
+                  'You have now booked with Charlie Deets!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to futher book the appointment',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+    ),
+    child: Text('BOOK'),
+  ),
+)
+
                 //End of Compant Widgets
                 
                 //End of Company Widgets
@@ -533,26 +1215,195 @@ SizedBox(
                 Container(
                   margin: EdgeInsets.only(left: 75),
                 ),
+                //NEW BUTTON 
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
-                    ),
-                    child: const Text("BOOK"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Gwinnett Landscaping Co.',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4046589874',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-658-9874',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
+                ),
+                Text(
+                  'Services:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Total Lanscaping Package - \$300',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                
+                SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+                Text(
+                  'Reviews:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                  'Kevin J:',
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),
+                  ),
+                  ),
+                Text(
+                  'I could not be happier with the services Initially, I was considering other options because my lawn was not responding to your treatments fertilization, weed control, pest control, etc. (at least, that is what I thought at the time). There were brown patches, weeds, and lawn gnats everywhere. I was so frustrated! However, I decided to wait it out, and I am so thrilled that I did. Patience is KEY! My lawn looks great! It is so green and lush, and I can not find any weeds. One year later, and I am a VERY SATISFIED customer!!',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),         
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 47, 255),
+    ),
+    child: Text('INFO'),
+  ),
+),
+// END OF NEW BUTTON
+SizedBox(
+                    width: 20, // Specify the height of the space between the Text widgets
+                    ),
+                // Start Book Button 
+  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Book Now!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4046589874',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-658-9874',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                ),
+                Text(
+                  'You have now booked with Gwinnett Landscaping Co.!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to futher book the appointment',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+    ),
+    child: Text('BOOK'),
+  ),
+)
                 //End of Compant Widgets
                 
                 //End of Company Widgets
@@ -566,7 +1417,7 @@ SizedBox(
                     ),
 
                                     SizedBox(
-                    height: 20, // Specify the height of the space between the Text widgets
+                    height: 40, // Specify the height of the space between the Text widgets
                     ),
 //Next Company       
  SizedBox(
@@ -613,14 +1464,39 @@ SizedBox(
                     ),
                     child: const Text("Search by Job"),
                   ),
-                )
+                ),
+SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
 
+SizedBox(
+                  width: 200.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const LoginPage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("Sign Out"),
+                  ),
+                ),
           ],
         ),
       ),
     );
   }
 }
+
+
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -827,242 +1703,3 @@ class Page4 extends StatelessWidget {
     );
   }
 }
-=======
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MowIT',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('MowIT'),
-      ),
-      
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/logo.jpg',
-              width: 150.0,
-              height: 150.0,
-            ),
-            SizedBox(height: 32),
-            Text(
-              'Please sign in or sign up',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the sign-in screen
-              },
-              child: Text('Sign In'),
-            ),
-            SizedBox(height: 16),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NameInputScreen()),
-                );
-              },
-              child: Text('Sign Up'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class NameInputScreen extends StatefulWidget {
-  @override
-  _NameInputScreenState createState() => _NameInputScreenState();
-}
-
-class _NameInputScreenState extends State<NameInputScreen> {
-  final _nameController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Enter Your Name'),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  hintText: 'Enter your name',
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  final name = _nameController.text;
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NameDisplayScreen(name: name),
-                    ),
-                  );
-                },
-                child: Text('Submit'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-class NameDisplayScreen extends StatelessWidget {
-  final String name;
-
-  const NameDisplayScreen({Key? key, required this.name}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Name Display'),
-      ),
-      body: Container(
-        alignment: Alignment.topLeft,
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Hello, $name!',
-                  style: TextStyle(fontSize: 24),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditAccountScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey[200],
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.grey[500],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                  'Five Stars',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                Icon(
-                  Icons.star,
-                  size: 16,
-                  color: Colors.yellow,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EditAccountScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Account'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'First Name:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Last Name:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Phone Number:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Email:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            Text(
-              'Password:',
-              style: TextStyle(fontSize: 16),
-            ),
-            TextField(),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Save Changes'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-

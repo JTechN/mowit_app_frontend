@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:mowit_app/login.dart';
 import 'package:mowit_app/profile_edit.dart';
-
+import 'package:mowit_app/settings2.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:mowit_app/homepage.dart';
 import 'package:mowit_app/profile_view2.dart';
 import 'package:mowit_app/settings.dart';
@@ -122,7 +123,7 @@ class _HomePageState2 extends State<HomePage2> {
                 MaterialPageRoute(
                   builder: (BuildContext context) {
                     //REDIRECT TO PROFILE VIEW
-                    return const ProfileView2();
+                    return const HomePage2();
                   },
                 ),
               );
@@ -137,7 +138,7 @@ class _HomePageState2 extends State<HomePage2> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const Settings();
+                    return const Settings2();
                   },
                 ),
               );
@@ -258,29 +259,82 @@ class Page1 extends StatelessWidget {
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage2();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
-                    ),
-                    child: const Text("Accept Work"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Customers',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+7706304566',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '770-630-4566',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-                //End of Compant Widgets
-                SizedBox(
-                    width: 20, // Specify the height of the space between the Text widgets
-                    ),
+                ),
+                Text(
+                  "You have accepted to work with Myles Joseph for an estimated payout of \$350",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to verify with customer',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+    ),
+    child: Text('Accept Work'),
+  ),
+),
                 
               ],
               
@@ -337,29 +391,82 @@ class Page1 extends StatelessWidget {
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage2();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
-                    ),
-                    child: const Text("Accept Work"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Customers',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4045681347',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-568-1347',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-                //End of Compant Widgets
-                SizedBox(
-                    width: 20, // Specify the height of the space between the Text widgets
-                    ),
+                ),
+                Text(
+                  "You have accepted to work with James Nguyen for an estimated payout of \$400",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to verify with customer',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+    ),
+    child: Text('Accept Work'),
+  ),
+),
                 
               ],
               
@@ -417,29 +524,82 @@ class Page1 extends StatelessWidget {
                   margin: EdgeInsets.only(left: 75),
                 ),
                 SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage2();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
-                    ),
-                    child: const Text("Accept Work"),
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Customers',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+404301348',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-301-1348',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-                //End of Compant Widgets
-                SizedBox(
-                    width: 20, // Specify the height of the space between the Text widgets
-                    ),
+                ),
+                Text(
+                  "You have accepted to work with Caleb Potter for an estimated payout of \$200",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to verify with customer',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+    ),
+    child: Text('Accept Work'),
+  ),
+),
                 
               ],
               
@@ -495,26 +655,83 @@ class Page1 extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(left: 75),
                 ),
-                SizedBox(
-                  width: 80.0,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const HomePage2();
-                          },
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromARGB(255, 53, 53, 53),
-                    ),
-                    child: const Text("Accept Work"),
+                  SizedBox(
+  width: 80.0,
+  height: 50.0,
+  child: ElevatedButton(
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Customers',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Service 
+                Center(
+                  child: GestureDetector(
+                    onTap: () => launch('tel:+4046301347',),         
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.phone, size: 20),
+                          SizedBox(width: 5),
+                Text(
+                    '404-630-1347',
+                      style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
+                ),
+                Text(
+                  "You have accepted to work with Johnny Favors for an estimated payout of \$150",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Text(
+                  'Please call the number to verify with customer',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 161, 161, 161),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),              
+              ],
+            ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('Close'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+    ),
+    child: Text('Accept Work'),
+  ),
+),
                 //End of Compant Widgets
                 SizedBox(
                     width: 20, // Specify the height of the space between the Text widgets
@@ -577,7 +794,31 @@ SizedBox(
                     ),
                     child: const Text("Post a Promo Deals"),
                   ),
-                )
+                ),
+                SizedBox(
+                    height: 20, // Specify the height of the space between the Text widgets
+                    ),
+
+SizedBox(
+                  width: 200.0,
+                  height: 50.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const LoginPage();
+                          },
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Color.fromARGB(255, 255, 73, 73),
+                    ),
+                    child: const Text("Sign Out"),
+                  ),
+                ),
             
           ],
         ),
